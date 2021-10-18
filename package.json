@@ -1,0 +1,24 @@
+{
+  "name": "Employee_Tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pegasoos/Employee-Map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pegasoos/Employee-Map/issues"
+  },
+  "homepage": "https://github.com/Pegasoos/Employee-Map#readme",
+  "devDependencies": {
+    "inquirer": "^8.2.0",
+    "mysql": "^2.18.1"
+  }
+}
