@@ -1,5 +1,6 @@
-//const query = require("./db/index");
 const inquirer = require("inquirer");
+const connection = require("./db/connection");
+const queries = require("./db/index");
 function mainTree(){
 inquirer
 .prompt([
@@ -24,7 +25,7 @@ inquirer
         .then((res) => {
         switch(res.AddChoices){
          case  "Add a new employee":
-         console.log("Success A")
+             console.log("Success A")
          break;
 
          case "Add a new role":
@@ -69,6 +70,7 @@ inquirer
     break;
 
     case "Exit":
+    connection.end();
     break;
 }})
 };
