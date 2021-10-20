@@ -66,7 +66,7 @@ inquirer
          break;
 
          case "View roles":
-         console.log("Success B")
+         queries.viewRole();
          break;
 
          case "View departments":

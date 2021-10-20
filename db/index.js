@@ -44,13 +44,15 @@ viewDepartment(){
         console.log(query.sql);
 };
 viewRole(){
-       let query = connection.query(
+       connection.query(
         "SELECT * FROM employees_db.employee_role",
         function(err, res){
             if(err) throw err;
-            console.log(res.affectedRows)
+            for (var i = 0; i < res.length; i++) {
+                console.log(`Department Id : ${res[i].dep_id} | Role Id: ${res[i].role_id} | Title: ${res[i].title} | Salary: ${res[i].salary}`);
+              }
         })
-        console.log(query.sql);
+        console.log("-----------------------------------");
 };
 viewEmployee(){
     connection.query(
