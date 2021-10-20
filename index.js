@@ -70,7 +70,7 @@ inquirer
          break;
 
          case "View departments":
-         console.log("Success C")
+         queries.viewDepartment();
          break;
         }
         })

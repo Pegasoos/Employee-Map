@@ -35,13 +35,15 @@ let query = connection.query(
         console.log(query.sql);
 };
 viewDepartment(){
-    let query = connection.query(
+    connection.query(
         "SELECT * FROM employees_db.employee_department",
         function(err, res){
             if(err) throw err;
-            console.log(res.affectedRows)
+            for (var i = 0; i < res.length; i++) {
+                console.log(`Department Id : ${res[i].dep_id} | Department Name: ${res[i].dep_name}`);
+              }
         })
-        console.log(query.sql);
+        console.log("-----------------------------------");
 };
 viewRole(){
        connection.query(
