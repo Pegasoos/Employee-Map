@@ -57,7 +57,10 @@ viewEmployee(){
         "SELECT * FROM employees_db.employee;",
         function(err, res){
             if(err) throw err;
-            console.log(res)
+            for (var i = 0; i < res.length; i++) {
+                console.log(`Id : ${res[i].id} | First Name: ${res[i].first_name} | Last Name: ${res[i].last_name} | Role Id: ${res[i].role_id} | Manager Id: ${res[i].manager_id}`);
+              }
+              console.log("-----------------------------------");
         })
         
 };
