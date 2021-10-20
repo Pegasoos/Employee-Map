@@ -4,7 +4,9 @@ class Query{
 addDepartment(answers){
     let query = connection.query(
     "INSERT INTO employees_db.employee_department ?",
-     answers,
+     
+    answers,
+     
      function(err, res){
          if(err) throw err;
          console.log(`${res.affectedRows} department added!`)
@@ -42,7 +44,7 @@ viewDepartment(){
         console.log(query.sql);
 };
 viewRole(){
-    let query = connection.query(
+       let query = connection.query(
         "SELECT * FROM employees_db.employee_role",
         function(err, res){
             if(err) throw err;
@@ -51,13 +53,13 @@ viewRole(){
         console.log(query.sql);
 };
 viewEmployee(){
-    let query = connection.query(
-        "SELECT * FROM employees_db.employee",
+    connection.query(
+        "SELECT * FROM employees_db.employee;",
         function(err, res){
             if(err) throw err;
-            console.log(res.affectedRows)
+            console.log(res)
         })
-        console.log(query.sql);
+        
 };
 updateRole(answers){
     let query = connection.query(//placeholder variables to model the function

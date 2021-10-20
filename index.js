@@ -33,7 +33,18 @@ inquirer
          break;
 
          case "Add a new department":
-         console.log("Success C")
+         inquirer.prompt([
+             {
+                type: "input",
+                name:"dep_id",
+                message:"What is the department id?"
+             },
+             {
+                type: "input",
+                name: "dep_name",
+                message: "What is the department name?"
+             }
+         ]).then((answers) => {console.log(answers)})
          break;
         }
         })
@@ -43,22 +54,22 @@ inquirer
         inquirer.prompt([
             {
                 type:"list",
-                choices: ["View an employee", "View a role", "View a department"],
+                choices: ["View employees", "View roles", "View departments"],
                 name:"ViewChoices",
                 message:"Would you like to:"
             }
         ])
         .then((res) => {
         switch(res.ViewChoices){
-         case  "View an employee":
-         console.log("Success A")
+         case  "View employees":
+         queries.viewEmployee();
          break;
 
-         case "View a role":
+         case "View roles":
          console.log("Success B")
          break;
 
-         case "View a department":
+         case "View departments":
          console.log("Success C")
          break;
         }
