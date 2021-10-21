@@ -68,16 +68,16 @@ viewEmployee(){
         })
         
 };
+//UPDATE employees_db.employee_role SET title = "Ratcheteer", dep_id = 1, salary = 30 WHERE role_id = 2;
 updateRole(answers){
-    let query = connection.query(//placeholder variables to model the function
-        `UPDATE employees_db.employee_role SET role_id = ${answers.second}, title = ${answers.third}, salary = ${answers.fourth} WHERE employees_db.employee.id = ${answers.first}`,
-        function(err, res){
+        connection.query(
+        `UPDATE employees_db.employee_role SET title = "${answers.title}", dep_id = ${answers.dep_id}, salary = ${answers.salary} WHERE role_id = ${answers.role_id};`,
+            function(err){
             if(err) throw err;
-            console.log(res.affectedRows)
+            console.log(`Department Id : ${answers.dep_id} | Role Id: ${answers.role_id} | Title: ${answers.title} | Salary: ${answers.salary}`);
+            console.log("-----------------------------------");
         })
-        console.log(query.sql);
 };
 };
-
 
 module.exports = new Query();

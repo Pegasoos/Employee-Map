@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const connection = require("./db/connection");
-const { addDepartment, addRole, addEmployees } = require("./db/index");
+const { addDepartment, addRole, addEmployees, updateRole } = require("./db/index");
 const queries = require("./db/index");
 function mainTree(){
 inquirer
@@ -125,7 +125,28 @@ inquirer
     break;
 
     case "Update employee roles":
-    console.log("success C");
+    inquirer.prompt([
+        {
+            type:"input",
+            message:"What is the title of the role you would like to update?",
+            name:"title"
+        },
+        {
+            type:"input",
+            name:"dep_id",
+            message:"What is the new id for this role's department?"
+        },
+        {
+            type:"input",
+            name:"role_id",
+            message:"What is the new id for this role?"
+        },
+        {
+            type:"input",
+            name:"salary",
+            message:"What is the new salary for this role?"
+        }
+    ]).then((answers) => updateRole(answers))
     break;
 
     case "Exit":
