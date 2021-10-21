@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const connection = require("./db/connection");
-const { addDepartment, addRole, addEmployees, updateRole } = require("./db/index");
 const queries = require("./db/index");
+const { addDepartment, addRole, addEmployees, updateRole } = require("./db/index");
 function mainTree(){
 inquirer
 .prompt([
