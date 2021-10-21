@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const connection = require("./db/connection");
-const { addDepartment, addRole } = require("./db/index");
+const { addDepartment, addRole, addEmployees } = require("./db/index");
 const queries = require("./db/index");
 function mainTree(){
 inquirer
@@ -26,7 +26,33 @@ inquirer
         .then((res) => {
         switch(res.AddChoices){
          case  "Add a new employee":
-             console.log("Success A")
+             inquirer.prompt([
+                 {
+                    type:"input",
+                    name:"id",
+                    message:"What is this employee's id?"
+                 },
+                 {
+                     type:"input",
+                     name:"first_name",
+                     message: "What is this employee's fist name?"
+                 },
+                 {
+                     type:"input",
+                     name:"last_name",
+                     message:"What is this employee's last name?"
+                 },
+                 {
+                     type:"input",
+                     name:"role_id",
+                     message:"What is the id for this employee's role?"
+                 },
+                 {
+                     type:"input",
+                     name:"manager_id",
+                     message:"What is the id of this employee's manager?"
+                 }
+             ]).then((answers) => {addEmployees(answers)})
          break;
 
          case "Add a new role":
