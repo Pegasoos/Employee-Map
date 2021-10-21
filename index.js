@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const connection = require("./db/connection");
+const { addDepartment } = require("./db/index");
 const queries = require("./db/index");
 function mainTree(){
 inquirer
@@ -44,7 +45,7 @@ inquirer
                 name: "dep_name",
                 message: "What is the department name?"
              }
-         ]).then((answers) => {console.log(answers)})
+         ]).then((answers) => {addDepartment(answers)})
          break;
         }
         })

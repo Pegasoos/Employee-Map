@@ -2,8 +2,8 @@ const connection = require("./connection");
 
 class Query{
 addDepartment(answers){
-    let query = connection.query(
-    "INSERT INTO employees_db.employee_department ?",
+    connection.query(
+    "INSERT INTO employees_db.employee_department SET ?",
      
     answers,
      
@@ -11,28 +11,28 @@ addDepartment(answers){
          if(err) throw err;
          console.log(`${res.affectedRows} department added!`)
      })
-    console.log(query.sql)
+    console.log("-----------------------------------")
     };
 
 addRole(answers){
-    let query = connection.query(
-        "INSERT INTO employees_db.employee_role ?",
+        connection.query(
+        "INSERT INTO employees_db.employee_role SET ?",
         answers,
         function(err, res){
             if(err) throw err;
             console.log(`${res.affectedRows} role added!`)
         })
-        console.log(query.sql);
+        console.log("-----------------------------------");
 };
 addEmployees(answers){
-let query = connection.query(
-        "INSERT INTO employees_db.employee ?",
+        connection.query(
+        "INSERT INTO employees_db.employee SET ?",
         answers,
         function(err, res){
             if(err) throw err;
             console.log(`${res.affectedRows} role added!`)
         })
-        console.log(query.sql);
+        console.log("-----------------------------------");
 };
 viewDepartment(){
     connection.query(
