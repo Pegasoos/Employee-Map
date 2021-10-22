@@ -3,10 +3,10 @@ const connection = require("./db/connection");
 const queries = require("./db/index");
 const { addDepartment, addRole, addEmployees, updateRole } = require("./db/index");
 
-function mainTree(){
+function mainTree(){//function begins with menu to select actions, is called again later to return to the starting menu
 inquirer
 .prompt([
-    {
+    {// Code for Add option begins on line 17, Code for View option begins on line 101, Code for Update option begins on line 125, Code for Exit on line 150
         type: "list",
         choices: ["Add a new employee, role, or department", "View current employees, roles, or department", "Update employee roles", "Exit"],
         name:"StartMenu",
@@ -25,9 +25,9 @@ inquirer
             }
         ])
         .then((res) => {
-        switch(res.AddChoices){
+        switch(res.AddChoices){//switch case to display different options
          case  "Add a new employee":
-             inquirer.prompt([
+             inquirer.prompt([//prompts to store user's new employee information
                  {
                     type:"input",
                     name:"id",
@@ -53,10 +53,10 @@ inquirer
                      name:"manager_id",
                      message:"What is the id of this employee's manager?"
                  }
-             ]).then((answers) => {addEmployees(answers, mainTree)})
+             ]).then((answers) => {addEmployees(answers, mainTree)})//function to send user's inputs in a mysql query to create new employee in database
              break;
          case "Add a new role":
-         inquirer.prompt([
+         inquirer.prompt([//user enters values for all role columns, values passed through function that queries mysql to create the role
              {
                  type:"input",
                  name:"dep_id",
@@ -81,7 +81,7 @@ inquirer
          break;
 
          case "Add a new department":
-         inquirer.prompt([
+         inquirer.prompt([//user enters values for the two department columns "dep_id" and "dep_name"
              {
                 type: "input",
                 name:"dep_id",
@@ -92,14 +92,14 @@ inquirer
                 name: "dep_name",
                 message: "What is the department name?"
              }
-         ]).then((answers) => {addDepartment(answers, mainTree)});
+         ]).then((answers) => {addDepartment(answers, mainTree)});//values passed through function that queries mysql to create department
          break;
         }
         })
     break;
 
     case "View current employees, roles, or department":
-        inquirer.prompt([
+        inquirer.prompt([//list of options so user can view table of their choice
             {
                 type:"list",
                 choices: ["View employees", "View roles", "View departments"],
@@ -123,7 +123,7 @@ inquirer
     break;
 
     case "Update employee roles":
-    inquirer.prompt([
+    inquirer.prompt([//user enters information to update the role based on the role id they enter
         {
             type:"input",
             message:"What is the title of the role you would like to update?",
@@ -147,7 +147,7 @@ inquirer
     ]).then((answers) => updateRole(answers, mainTree));
     break;
 
-    case "Exit":
+    case "Exit"://Exit option to stop connection to database and app when user is finished
     connection.end();
 }})
 };

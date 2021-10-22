@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const util = require("util");
-
+//connection to mysql server
 const connection = mysql.createConnection({
     host: "localhost",
     port:"3306",
@@ -15,5 +15,5 @@ connection.connect(function(err){
 });
 
 util.promisify(connection.query);
-
+//export for use in other files
 module.exports = connection;
