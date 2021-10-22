@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const connection = require("./db/connection");
 const queries = require("./db/index");
 const { addDepartment, addRole, addEmployees, updateRole } = require("./db/index");
+
 function mainTree(){
 inquirer
 .prompt([
@@ -52,9 +53,8 @@ inquirer
                      name:"manager_id",
                      message:"What is the id of this employee's manager?"
                  }
-             ]).then((answers) => {addEmployees(answers)})
-         break;
-
+             ]).then((answers) => {addEmployees(answers, mainTree)})
+             break;
          case "Add a new role":
          inquirer.prompt([
              {
@@ -77,7 +77,7 @@ inquirer
                  name:"salary",
                  message:"What is this role's salary?"
              }
-         ]).then((answers) => {addRole(answers)})
+         ]).then((answers) => {addRole(answers, mainTree)})
          break;
 
          case "Add a new department":
@@ -92,7 +92,7 @@ inquirer
                 name: "dep_name",
                 message: "What is the department name?"
              }
-         ]).then((answers) => {addDepartment(answers)})
+         ]).then((answers) => {addDepartment(answers, mainTree)});
          break;
         }
         })
@@ -110,15 +110,13 @@ inquirer
         .then((res) => {
         switch(res.ViewChoices){
          case  "View employees":
-         queries.viewEmployee();
+         queries.viewEmployee(mainTree);
          break;
-
          case "View roles":
-         queries.viewRole();
+         queries.viewRole(mainTree);
          break;
-
          case "View departments":
-         queries.viewDepartment();
+         queries.viewDepartment(mainTree);
          break;
         }
         })
@@ -139,19 +137,18 @@ inquirer
         {
             type:"input",
             name:"role_id",
-            message:"What is the new id for this role?"
+            message:"What is the id for this role?"
         },
         {
             type:"input",
             name:"salary",
             message:"What is the new salary for this role?"
         }
-    ]).then((answers) => updateRole(answers))
+    ]).then((answers) => updateRole(answers, mainTree));
     break;
 
     case "Exit":
     connection.end();
-    break;
 }})
 };
 mainTree();
