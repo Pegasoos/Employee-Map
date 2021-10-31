@@ -11,6 +11,8 @@
  6. [License](#license)
  7. [Questions](#questions)
 
+[![Employe Tracker Video](https://res.cloudinary.com/marcomontalbano/image/upload/v1635638722/video_to_markdown/images/youtube--JrETHbpnKZk-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/JrETHbpnKZk "Employe Tracker Video")
+
 ## Description
 ### Employee Map is a CLI application that allows users to add, view, and update roles, departments, and employees within their business.
 ## Installation
